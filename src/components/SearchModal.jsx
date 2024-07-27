@@ -26,7 +26,7 @@ export const SearchModal = () => {
         closable={false}
         width={650}
       >
-        <div className="max-h-[400px] w-[600px] overflow-auto flex">
+        <div className="w-[600px] flex">
           <SearchResult
             selectedGoal={selectedGoal}
             setSelectedGoal={setSelectedGoal}

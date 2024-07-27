@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 export const SearchResult = ({ selectedGoal, setSelectedGoal }) => {
   return (
-    <div className="flex flex-col flex-1 gap-4">
+    <div className="flex flex-col flex-1 gap-4 overflow-auto max-h-[400px]">
       {GOALs.map((goal) => (
         <div
           key={goal.id}

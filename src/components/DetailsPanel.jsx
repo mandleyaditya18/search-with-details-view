@@ -1,28 +1,49 @@
+import { AnimatePresence, motion } from "framer-motion";
+
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import PropTypes from "prop-types";
 
-export const DetailsPanel = ({ selectedGoal, setSelectedGoal }) => {
-  if (!selectedGoal) return null;
+const MOTION_VARIANTS = {
+  hidden: { opacity: 0, x: 200 },
+  open: { opacity: 1, x: 0 },
+};
 
-  const goalDetails = [
-    { label: "Goal Type", value: selectedGoal.goalType },
-    { label: "Goal Cycle", value: selectedGoal.goalCycle },
-    { label: "Visibility", value: selectedGoal.goalVisibility },
-    { label: "Progress", value: `${selectedGoal.currentProgressPercentage}%` },
-  ];
+export const DetailsPanel = ({ selectedGoal, setSelectedGoal }) => {
+  const goalDetails = selectedGoal
+    ? [
+        { label: "Goal Type", value: selectedGoal.goalType },
+        { label: "Goal Cycle", value: selectedGoal.goalCycle },
+        { label: "Visibility", value: selectedGoal.goalVisibility },
+        {
+          label: "Progress",
+          value: `${selectedGoal.currentProgressPercentage}%`,
+        },
+      ]
+    : [];
 
   return (
-    <div className="border-l ml-2 px-4 flex flex-col gap-4 w-[200px]">
-      <span
-        className="cursor-pointer bg-slate-200 px-2 py-1 rounded w-fit hover:bg-slate-300"
-        onClick={() => setSelectedGoal(null)}
-      >
-        <ArrowLeftOutlined />
-      </span>
-      {goalDetails.map((info, index) => (
-        <DetailInfo key={index} label={info.label} value={info.value} />
-      ))}
-    </div>
+    <AnimatePresence>
+      {selectedGoal && (
+        <motion.div
+          initial="hidden"
+          animate="open"
+          exit="hidden"
+          variants={MOTION_VARIANTS}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          className="border-l ml-2 px-4 flex flex-col gap-4 w-[200px]"
+        >
+          <span
+            className="cursor-pointer bg-slate-200 px-2 py-1 rounded w-fit hover:bg-slate-300"
+            onClick={() => setSelectedGoal(null)}
+          >
+            <ArrowLeftOutlined />
+          </span>
+          {goalDetails.map((info, index) => (
+            <DetailInfo key={index} label={info.label} value={info.value} />
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

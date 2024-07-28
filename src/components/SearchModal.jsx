@@ -13,7 +13,7 @@ export const SearchModal = () => {
   return (
     <>
       <div
-        className="flex items-center border-2 border-slate-900 rounded-md px-8 py-4 w-[500px] h-fit cursor-pointer"
+        className="flex items-center border-2 border-white text-white rounded-md px-8 py-4 w-[500px] h-fit cursor-pointer"
         onClick={() => setShowModal(true)}
       >
         <SearchOutlined className="mr-4 text-2xl" />
@@ -25,8 +25,10 @@ export const SearchModal = () => {
         footer={null}
         closable={false}
         width={650}
+        classNames={{ content: "!bg-zinc-700 !p-0" }}
+        className="overflow-hidden"
       >
-        <div className="w-[600px] flex">
+        <div className="w-[650px] flex py-5">
           <SearchResult
             selectedGoal={selectedGoal}
             setSelectedGoal={setSelectedGoal}

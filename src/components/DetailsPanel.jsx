@@ -33,7 +33,7 @@ export const DetailsPanel = ({ selectedGoal, setSelectedGoal }) => {
           className="border-l ml-2 px-4 flex flex-col gap-4 w-[200px]"
         >
           <span
-            className="cursor-pointer bg-slate-200 px-2 py-1 rounded w-fit hover:bg-slate-300"
+            className="cursor-pointer bg-zinc-300 px-2 py-1 rounded w-fit hover:bg-zinc-400"
             onClick={() => setSelectedGoal(null)}
           >
             <ArrowLeftOutlined />
@@ -50,8 +50,10 @@ export const DetailsPanel = ({ selectedGoal, setSelectedGoal }) => {
 const DetailInfo = ({ label, value }) => {
   return (
     <div className="flex flex-col">
-      <label className="text-sm font-bold text-slate-500">{label}</label>
-      <span className="capitalize text-lg font-extralight">{value}</span>
+      <label className="text-sm font-bold text-zinc-400">{label}</label>
+      <span className="capitalize text-lg font-extralight text-white">
+        {value}
+      </span>
     </div>
   );
 };

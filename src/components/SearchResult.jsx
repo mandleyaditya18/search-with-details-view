@@ -5,13 +5,13 @@ import classNames from "classnames";
 
 export const SearchResult = ({ selectedGoal, setSelectedGoal }) => {
   return (
-    <div className="flex flex-col flex-1 gap-4 overflow-auto max-h-[400px]">
+    <div className="flex flex-col flex-1 gap-4 overflow-auto max-h-[400px] px-6">
       {GOALs.map((goal) => (
         <div
           key={goal.id}
           className={classNames(
-            "flex justify-between cursor-pointer hover:bg-slate-200 px-4 py-2 rounded-md",
-            { "bg-slate-200": selectedGoal && selectedGoal.id === goal.id },
+            "flex justify-between cursor-pointer hover:bg-zinc-500 text-white px-4 py-2 rounded-md",
+            { "bg-zinc-500": selectedGoal && selectedGoal.id === goal.id },
           )}
           onClick={() => setSelectedGoal(goal)}
         >

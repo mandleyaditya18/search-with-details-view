@@ -15,7 +15,13 @@ export const SearchResult = ({ selectedGoal, setSelectedGoal }) => {
           )}
           onClick={() => setSelectedGoal(goal)}
         >
-          <p>{goal.goalTitle}</p>
+          <div>
+            <p>{goal.goalTitle}</p>
+            <ul className="flex gap-6 list-disc pl-3">
+              <li className="capitalize">{goal.goalType}</li>
+              <li className="capitalize">{goal.goalCycle}</li>
+            </ul>
+          </div>
           <Avatar size="small">{goal.owners[0][0]}</Avatar>
         </div>
       ))}
